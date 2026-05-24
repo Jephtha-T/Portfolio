@@ -10,6 +10,7 @@
   },
   "scripts": {
     "lint": "eslint . --ext .js --max-warnings=0",
+    "typecheck": "node --check script.js",
     "format:check": "prettier --check \"**/*.{js,css,html}\"",
     "format:fix": "prettier --write \"**/*.{js,css,html}\" && eslint --fix . --ext .js"
   }

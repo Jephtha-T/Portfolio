@@ -26,7 +26,11 @@
 
   const revealSite = async () => {
     const images = Array.from(document.images);
-    const decodePromises = images.map((image) => (typeof image.decode === 'function' ? image.decode().catch(() => undefined) : waitForImage(image)));
+    const decodePromises = images.map((image) =>
+      typeof image.decode === 'function'
+        ? image.decode().catch(() => undefined)
+        : waitForImage(image)
+    );
 
     await Promise.all(decodePromises);
 
@@ -178,7 +182,9 @@
   document.querySelectorAll('.project-scroll').forEach((scroller) => {
     const sections = Array.from(scroller.querySelectorAll('.project-section'));
     const dots = Array.from(
-      scroller.closest('.window__body--project, .window__body--showcase')?.querySelectorAll('[data-scroll-target]') || [],
+      scroller
+        .closest('.window__body--project, .window__body--showcase')
+        ?.querySelectorAll('[data-scroll-target]') || []
     );
 
     const setActiveDot = () => {
@@ -187,7 +193,7 @@
           const distance = Math.abs(getSectionScrollTop(section, scroller) - scroller.scrollTop);
           return distance < closest.distance ? { section, distance } : closest;
         },
-        { section: sections[0], distance: Number.POSITIVE_INFINITY },
+        { section: sections[0], distance: Number.POSITIVE_INFINITY }
       ).section;
 
       dots.forEach((dot) => {
@@ -197,7 +203,9 @@
       });
     };
 
-    scroller.addEventListener('scroll', () => window.requestAnimationFrame(setActiveDot), { passive: true });
+    scroller.addEventListener('scroll', () => window.requestAnimationFrame(setActiveDot), {
+      passive: true,
+    });
     setActiveDot();
   });
 
@@ -209,8 +217,12 @@
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
 
-    const openWindows = Array.from(floatingWindows).filter((win) => win.classList.contains('is-open'));
-    const topWindow = openWindows.sort((a, b) => Number(b.style.zIndex || 0) - Number(a.style.zIndex || 0))[0];
+    const openWindows = Array.from(floatingWindows).filter((win) =>
+      win.classList.contains('is-open')
+    );
+    const topWindow = openWindows.sort(
+      (a, b) => Number(b.style.zIndex || 0) - Number(a.style.zIndex || 0)
+    )[0];
     if (topWindow) closeWindow(topWindow);
   });
 
@@ -226,7 +238,10 @@
   const handlePointerDown = (event) => {
     if (window.matchMedia('(max-width: 780px)').matches) return;
 
-    const bar = event.target instanceof Element ? event.target.closest('.window--floating .window__bar') : null;
+    const bar =
+      event.target instanceof Element
+        ? event.target.closest('.window--floating .window__bar')
+        : null;
     const win = event.target instanceof Element ? event.target.closest('.window--floating') : null;
 
     if (!bar || !win || !win.classList.contains('is-open')) return;
