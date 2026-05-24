@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jephtha Tandri | Portfolio Desktop</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="desktop" id="desktop">
+      <section class="desktop-icons desktop-icons--projects" aria-label="Projects">
+        <button class="desktop-icon" type="button" data-open="cekopi" aria-label="Open Espresso Analysis">
+          <img src="Assets/Icons/cekopi.svg" alt="" />
+          <span>Espresso<br />Analysis</span>
+        </button>
+        <button class="desktop-icon" type="button" data-open="cakequest" aria-label="Open CakeQuest">
+          <img src="Assets/Icons/cake.svg" alt="" />
+          <span>CakeQuest</span>
+        </button>
+        <button class="desktop-icon" type="button" data-open="skybattle" aria-label="Open Sky Battle">
+          <img src="Assets/Icons/skybattle.svg" alt="" />
+          <span>Sky Battle</span>
+        </button>
+        <button class="desktop-icon" type="button" data-open="lakewater" aria-label="Open Lake Water Readings">
+          <img src="Assets/Icons/earth.svg" alt="" />
+          <span>Lake Water<br />Readings</span>
+        </button>
+      </section>
+
+      <div class="project-note" aria-hidden="true"></div>
+
+      <section class="hero" aria-label="Introduction">
+        <p>hi! I'm</p>
+        <h1>Jephtha <span>Tandri</span></h1>
+        <strong>I build things :)</strong>
+
+        <div class="hero-actions" aria-label="Desktop shortcuts">
+          <button class="desktop-icon desktop-icon--center" type="button" data-open="about" aria-label="Open about me">
+            <img src="Assets/Icons/noun-speech-bubble-1338935.svg" alt="" />
+            <span>about me</span>
+          </button>
+          <button
+            class="desktop-icon desktop-icon--center"
+            type="button"
+            data-mail="jephtha909@gmail.com"
+            aria-label="Email Jephtha"
+          >
+            <img src="Assets/Icons/noun-envelope-1339074.svg" alt="" />
+            <span>contact</span>
+          </button>
+        </div>
+      </section>
+
+      <section
+        id="window-about"
+        class="window window--floating window--about"
+        role="dialog"
+        aria-modal="false"
+        aria-label="About me"
+        aria-hidden="true"
+        data-window="about"
+      >
+        <div class="window__bar window__bar--yellow">
+          <span>about me</span>
+          <button class="window__close" type="button" data-close aria-label="Close about me window">&times;</button>
+        </div>
+        <div class="window__body window__body--about">
+          <div class="about-top">
+            <img class="about-avatar" src="Assets/Icons/JP Logo.svg" alt="Jephtha Tandri logo" />
+            <div class="about-title">
+              <h2>Jephtha Tandri</h2>
+              <p>Software Engineer | Computer Science &amp; AI Graduate 2026</p>
+            </div>
+            <img class="about-qr" src="Assets/CV QR.png" alt="Portfolio QR code" />
+          </div>
+          <div class="about-copy">
+            <p>
+              Always looking to work on another project that hasn't been made yet. A fresh graduate of the University of
+              Nottingham with a Bachelors in Computer Science + AI, I have a particular interest in Machine Learning &amp;
+              Computer Vision applications.
+            </p>
+            <p>
+              I'm currently looking for graduate roles and opportunities in full-stack development, backend, or ML/AI
+              engineering where I can contribute to products that actually make an impact.
+            </p>
+            <p>Always happy to connect with people working on interesting problems.</p>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="window-cekopi"
+        class="window window--floating window--project window--cekopi"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Cekopi"
+        aria-hidden="true"
+        data-window="cekopi"
+      >
+        <div class="window__bar window__bar--project">
+          <span>Cekopi</span>
+          <button class="window__close" type="button" data-close aria-label="Close Cekopi window">&times;</button>
+        </div>
+        <div class="window__body window__body--project">
+          <nav class="project-dots" aria-label="Cekopi sections">
+            <button type="button" data-scroll-target="cekopi-title" aria-label="Go to Cekopi title"></button>
+            <button type="button" data-scroll-target="cekopi-analysis" aria-label="Go to Cekopi analysis"></button>
+            <button type="button" data-scroll-target="cekopi-pipeline" aria-label="Go to mobile pipeline"></button>
+          </nav>
+          <div class="project-scroll">
+            <section class="project-section cekopi-title" id="cekopi-title">
+              <img
+                class="cekopi-title-image"
+                src="Assets/Cekopi/Frame 3.png"
+                alt="Cekopi espresso shot extraction analysis tool"
+                loading="lazy"
+                decoding="async"
+              />
+            </section>
+
+            <section class="project-section cekopi-analysis" id="cekopi-analysis">
+              <div class="cekopi-copy">
+                <p>
+                  Espresso Extraction is a naturally finnicky process with a rich visual landscape of features to be
+                  extracted and analysed, here i have built an experimental system to analyse and predict espresso
+                  quality off of the output stream of a naked portafilters, improving espresso prep workflow and
+                  creating useful data for researchers
+                </p>
+                <div class="project-buttons">
+                  <a href="https://github.com/Jephtha-T/EspExAnalyser" target="_blank" rel="noopener noreferrer">
+                    <img src="Assets/Icons/github.svg" alt="" />
+                    <span>Github</span>
+                  </a>
+                  <a
+                    href="https://drive.google.com/file/d/1G2eDrqKYsEG2PgP1s3cj7EkXHyOeBs7u/view?usp=drive_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src="Assets/Icons/Google.svg" alt="" />
+                    <span>Research Paper</span>
+                  </a>
+                </div>
+              </div>
+              <img class="cekopi-roi" src="Assets/Cekopi/Frame 2.png" alt="Cekopi ROI extraction frame" loading="lazy" decoding="async" />
+            </section>
+
+            <section class="project-section cekopi-pipeline" id="cekopi-pipeline">
+              <h2><span>Full Mobile</span> Pipeline</h2>
+              <div class="phone-row" aria-label="Cekopi mobile pipeline screens">
+                <img class="phone-shot" src="Assets/Cekopi/splash.png" alt="Cekopi splash screen" loading="lazy" decoding="async" />
+                <img class="phone-shot" src="Assets/Cekopi/mobile home.png" alt="Cekopi mobile home screen" loading="lazy" decoding="async" />
+                <img class="phone-shot" src="Assets/Cekopi/mobile ROI.png" alt="Cekopi ROI confirmation screen" loading="lazy" decoding="async" />
+                <img class="phone-shot" src="Assets/Cekopi/mobile Result.png" alt="Cekopi result screen" loading="lazy" decoding="async" />
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="window-cakequest"
+        class="window window--floating window--showcase window--game window--cakequest"
+        role="dialog"
+        aria-modal="false"
+        aria-label="CakeQuest"
+        aria-hidden="true"
+        data-window="cakequest"
+      >
+        <div class="window__bar window__bar--yellow">
+          <span>CakeQuest</span>
+          <button class="window__close" type="button" data-close aria-label="Close CakeQuest window">&times;</button>
+        </div>
+        <div class="window__body window__body--showcase game-showcase game-showcase--cakequest">
+          <nav class="project-dots" aria-label="CakeQuest sections">
+            <button type="button" data-scroll-target="cakequest-title" aria-label="Go to CakeQuest title"></button>
+            <button type="button" data-scroll-target="cakequest-gameplay" aria-label="Go to CakeQuest gameplay"></button>
+          </nav>
+          <div class="project-scroll">
+            <section class="project-section game-hero game-hero--cakequest" id="cakequest-title" aria-label="Cake Quest title screen">
+              <img src="Assets/CakeQuest/Home.png" alt="Cake Quest title screen" loading="lazy" decoding="async" />
+              <h2>
+                <span>A</span>
+                <span>Java</span>
+                <span>LibGDX</span>
+                <span>Platformer</span>
+                <span>Game</span>
+              </h2>
+            </section>
+            <section class="project-section game-play-section" id="cakequest-gameplay" aria-label="Cake Quest gameplay">
+              <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="Assets/CakeQuest/loop.mp4" type="video/mp4" />
+              </video>
+              <div class="project-description-card project-description-card--game">
+                <p>
+                  Cake Quest was a small project done with a small team of developers within my first year of University
+                  to create a simple platformer game focused on timing-based gameplay with level progression, collisions
+                  and animated sprites and environments using Java's LibGDX library.
+                </p>
+                <div class="project-buttons project-buttons--compact">
+                  <a href="https://github.com/Jephtha-T/CakeQuest" target="_blank" rel="noopener noreferrer">
+                    <img src="Assets/Icons/github.svg" alt="" />
+                    <span>Github</span>
+                  </a>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="window-skybattle"
+        class="window window--floating window--showcase window--game window--skybattle"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Sky Battle"
+        aria-hidden="true"
+        data-window="skybattle"
+      >
+        <div class="window__bar window__bar--yellow">
+          <span>SkyBattle</span>
+          <button class="window__close" type="button" data-close aria-label="Close Sky Battle window">&times;</button>
+        </div>
+        <div class="window__body window__body--showcase game-showcase game-showcase--skybattle">
+          <nav class="project-dots" aria-label="Sky Battle sections">
+            <button type="button" data-scroll-target="skybattle-title" aria-label="Go to Sky Battle title"></button>
+            <button type="button" data-scroll-target="skybattle-gameplay" aria-label="Go to Sky Battle gameplay"></button>
+          </nav>
+          <div class="project-scroll">
+            <section class="project-section game-hero game-hero--skybattle" id="skybattle-title" aria-label="Sky Battle title screen">
+              <img src="Assets/SkyBattle/Home.png" alt="Sky Battle title screen" loading="lazy" decoding="async" />
+              <h2>A Fork of the Classic Game <span>1942</span></h2>
+            </section>
+            <section class="project-section game-play-section" id="skybattle-gameplay" aria-label="Sky Battle gameplay">
+              <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                <source
+                  src="Assets/SkyBattle/loop.mp4"
+                  type="video/mp4"
+                />
+              </video>
+              <div class="project-description-card project-description-card--game">
+                <p>
+                  Sky Battle is an improved fork of the game '1942' with added features and systems, centred around
+                  improved enemy behaviour, projectile combat, and escalating encounter design. Adding to the arcade feel
+                  of the original game, power-up items and different enemy types was added as well as a final boss fight
+                  for difficulty progression.
+                </p>
+                <div class="project-buttons project-buttons--compact">
+                  <a href="https://github.com/Jephtha-T/DMS_CW2024" target="_blank" rel="noopener noreferrer">
+                    <img src="Assets/Icons/github.svg" alt="" />
+                    <span>Github</span>
+                  </a>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="window-lakewater"
+        class="window window--floating window--showcase window--watersat"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Water Sat"
+        aria-hidden="true"
+        data-window="lakewater"
+      >
+        <div class="window__bar window__bar--yellow">
+          <span>Water Sat</span>
+          <button class="window__close" type="button" data-close aria-label="Close Water Sat window">&times;</button>
+        </div>
+        <div class="window__body window__body--showcase watersat-showcase">
+          <nav class="project-dots" aria-label="Water Sat sections">
+            <button type="button" data-scroll-target="watersat-home" aria-label="Go to Water Sat homepage"></button>
+            <button type="button" data-scroll-target="watersat-analysis" aria-label="Go to Water Sat analysis"></button>
+            <button type="button" data-scroll-target="watersat-map" aria-label="Go to Water Sat map"></button>
+          </nav>
+          <div class="project-scroll">
+            <section class="project-section watersat-panel watersat-panel--home" id="watersat-home" aria-label="Water Sat homepage">
+              <img src="Assets/WaterSat/Home.png" alt="Water Sat homepage" loading="lazy" decoding="async" />
+            </section>
+            <section class="project-section watersat-panel watersat-panel--analysis" id="watersat-analysis" aria-label="Water Sat satellite analysis">
+              <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="Assets/WaterSat/loop.mp4" type="video/mp4" />
+              </video>
+              <div class="project-description-card project-description-card--water project-description-card--water-primary">
+                <p>
+                  This project is a web-based analysis system designed to automate the retrieval and processing of
+                  satellite-based water temperature data from sources such as MODIS and EcoStress. The system combines
+                  Python backend automation, API-based satellite data retrieval, and an interactive UI to simplify
+                  environmental monitoring workflows.
+                </p>
+                <div class="project-buttons project-buttons--compact project-buttons--right">
+                  <a
+                    href="https://github.com/Abdullah-Usmani/sat-water-temps/tree/Abdullah"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src="Assets/Icons/github.svg" alt="" />
+                    <span>Github</span>
+                  </a>
+                </div>
+              </div>
+            </section>
+            <section class="project-section watersat-panel watersat-panel--map" id="watersat-map" aria-label="Water Sat map view">
+              <img src="Assets/WaterSat/Trans.png" alt="Water Sat interactive map view" loading="lazy" decoding="async" />
+              <div class="project-description-card project-description-card--water project-description-card--water-secondary">
+                <p>
+                  Further work on this project has since been very gracefully handled by my colleague Maxim Skobun who had
+                  taken over this project since my team's handover of this prototype to the client in mid 2025. I am very
+                  thankful to Maxim for further development of this project and his work can be seen in the link below.
+                </p>
+                <div class="project-buttons project-buttons--compact project-buttons--right">
+                  <a href="https://sat-water-temps.pages.dev" target="_blank" rel="noopener noreferrer">
+                    <img src="Assets/Icons/earth.svg" alt="" />
+                    <span>Live Site</span>
+                  </a>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="taskbar" aria-label="Taskbar">
+      <div class="taskbar-logo" aria-label="Jephtha Tandri logo">
+        <img src="Assets/Icons/JP Logo.svg" alt="" />
+      </div>
+      <nav class="taskbar-apps" aria-label="Social links">
+        <a href="mailto:jephtha909@gmail.com" target="_blank" rel="noopener noreferrer">
+          <img src="Assets/Icons/gmail.svg" alt="" />
+          <span>Gmail</span>
+        </a>
+        <a href="https://open.spotify.com/user/k9gaming909?si=69a5829d47234a96" target="_blank" rel="noopener noreferrer">
+          <img src="Assets/Icons/spotify.svg" alt="" />
+          <span>Spotify</span>
+        </a>
+        <a href="https://wa.me/60183219218" target="_blank" rel="noopener noreferrer">
+          <img src="Assets/Icons/whatsapp.svg" alt="" />
+          <span>Whatsapp</span>
+        </a>
+        <a href="https://www.instagram.com/jejephtha/" target="_blank" rel="noopener noreferrer">
+          <img src="Assets/Icons/Ig.svg" alt="" />
+          <span>Instagram</span>
+        </a>
+        <a href="https://www.linkedin.com/in/jephtha-at/" target="_blank" rel="noopener noreferrer">
+          <img src="Assets/Icons/linkedin.svg" alt="" />
+          <span>Linkedin</span>
+        </a>
+        <a href="https://github.com/Jephtha-T" target="_blank" rel="noopener noreferrer">
+          <img src="Assets/Icons/github.svg" alt="" />
+          <span>Github</span>
+        </a>
+      </nav>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
