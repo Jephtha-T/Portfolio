@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Jephtha Tandri | Portfolio Desktop</title>
+    <link rel="preload" as="image" href="Assets/Cekopi/Frame 3.png" />
+    <link rel="preload" as="image" href="Assets/CakeQuest/Home.png" />
+    <link rel="preload" as="image" href="Assets/SkyBattle/Home.png" />
+    <link rel="preload" as="image" href="Assets/WaterSat/Home.png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -113,7 +117,8 @@
                 class="cekopi-title-image"
                 src="Assets/Cekopi/Frame 3.png"
                 alt="Cekopi espresso shot extraction analysis tool"
-                loading="lazy"
+                loading="eager"
+                fetchpriority="high"
                 decoding="async"
               />
             </section>
@@ -177,7 +182,7 @@
           </nav>
           <div class="project-scroll">
             <section class="project-section game-hero game-hero--cakequest" id="cakequest-title" aria-label="Cake Quest title screen">
-              <img src="Assets/CakeQuest/Home.png" alt="Cake Quest title screen" loading="lazy" decoding="async" />
+              <img src="Assets/CakeQuest/Home.png" alt="Cake Quest title screen" loading="eager" fetchpriority="high" decoding="async" />
               <h2>
                 <span>A</span>
                 <span>Java</span>
@@ -228,7 +233,7 @@
           </nav>
           <div class="project-scroll">
             <section class="project-section game-hero game-hero--skybattle" id="skybattle-title" aria-label="Sky Battle title screen">
-              <img src="Assets/SkyBattle/Home.png" alt="Sky Battle title screen" loading="lazy" decoding="async" />
+              <img src="Assets/SkyBattle/Home.png" alt="Sky Battle title screen" loading="eager" fetchpriority="high" decoding="async" />
               <h2>A Fork of the Classic Game <span>1942</span></h2>
             </section>
             <section class="project-section game-play-section" id="skybattle-gameplay" aria-label="Sky Battle gameplay">
@@ -278,7 +283,7 @@
           </nav>
           <div class="project-scroll">
             <section class="project-section watersat-panel watersat-panel--home" id="watersat-home" aria-label="Water Sat homepage">
-              <img src="Assets/WaterSat/Home.png" alt="Water Sat homepage" loading="lazy" decoding="async" />
+              <img src="Assets/WaterSat/Home.png" alt="Water Sat homepage" loading="eager" fetchpriority="high" decoding="async" />
             </section>
             <section class="project-section watersat-panel watersat-panel--analysis" id="watersat-analysis" aria-label="Water Sat satellite analysis">
               <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
