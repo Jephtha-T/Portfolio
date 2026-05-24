@@ -4,13 +4,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Jephtha Tandri | Portfolio Desktop</title>
+    <link rel="preload" as="image" href="Assets/clouds.png" />
+    <link rel="preload" as="image" href="Assets/Note.png" />
+    <link rel="preload" as="image" href="Assets/CV QR.png" />
     <link rel="preload" as="image" href="Assets/Cekopi/Frame 3.png" />
+    <link rel="preload" as="image" href="Assets/Cekopi/Frame 2.png" />
+    <link rel="preload" as="image" href="Assets/Cekopi/splash.png" />
+    <link rel="preload" as="image" href="Assets/Cekopi/mobile home.png" />
+    <link rel="preload" as="image" href="Assets/Cekopi/mobile ROI.png" />
+    <link rel="preload" as="image" href="Assets/Cekopi/mobile Result.png" />
     <link rel="preload" as="image" href="Assets/CakeQuest/Home.png" />
     <link rel="preload" as="image" href="Assets/SkyBattle/Home.png" />
     <link rel="preload" as="image" href="Assets/WaterSat/Home.png" />
+    <link rel="preload" as="image" href="Assets/WaterSat/Trans.png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="splash" aria-hidden="true">
+      <img class="splash__logo" src="Assets/Icons/JP Logo.svg" alt="" />
+    </div>
+
     <main class="desktop" id="desktop">
       <section class="desktop-icons desktop-icons--projects" aria-label="Projects">
         <button class="desktop-icon" type="button" data-open="cekopi" aria-label="Open Espresso Analysis">
@@ -117,8 +130,6 @@
                 class="cekopi-title-image"
                 src="Assets/Cekopi/Frame 3.png"
                 alt="Cekopi espresso shot extraction analysis tool"
-                loading="eager"
-                fetchpriority="high"
                 decoding="async"
               />
             </section>
@@ -146,16 +157,16 @@
                   </a>
                 </div>
               </div>
-              <img class="cekopi-roi" src="Assets/Cekopi/Frame 2.png" alt="Cekopi ROI extraction frame" loading="lazy" decoding="async" />
+              <img class="cekopi-roi" src="Assets/Cekopi/Frame 2.png" alt="Cekopi ROI extraction frame" decoding="async" />
             </section>
 
             <section class="project-section cekopi-pipeline" id="cekopi-pipeline">
               <h2><span>Full Mobile</span> Pipeline</h2>
               <div class="phone-row" aria-label="Cekopi mobile pipeline screens">
-                <img class="phone-shot" src="Assets/Cekopi/splash.png" alt="Cekopi splash screen" loading="lazy" decoding="async" />
-                <img class="phone-shot" src="Assets/Cekopi/mobile home.png" alt="Cekopi mobile home screen" loading="lazy" decoding="async" />
-                <img class="phone-shot" src="Assets/Cekopi/mobile ROI.png" alt="Cekopi ROI confirmation screen" loading="lazy" decoding="async" />
-                <img class="phone-shot" src="Assets/Cekopi/mobile Result.png" alt="Cekopi result screen" loading="lazy" decoding="async" />
+                <img class="phone-shot" src="Assets/Cekopi/splash.png" alt="Cekopi splash screen" decoding="async" />
+                <img class="phone-shot" src="Assets/Cekopi/mobile home.png" alt="Cekopi mobile home screen" decoding="async" />
+                <img class="phone-shot" src="Assets/Cekopi/mobile ROI.png" alt="Cekopi ROI confirmation screen" decoding="async" />
+                <img class="phone-shot" src="Assets/Cekopi/mobile Result.png" alt="Cekopi result screen" decoding="async" />
               </div>
             </section>
           </div>
@@ -182,7 +193,7 @@
           </nav>
           <div class="project-scroll">
             <section class="project-section game-hero game-hero--cakequest" id="cakequest-title" aria-label="Cake Quest title screen">
-              <img src="Assets/CakeQuest/Home.png" alt="Cake Quest title screen" loading="eager" fetchpriority="high" decoding="async" />
+              <img src="Assets/CakeQuest/Home.png" alt="Cake Quest title screen" decoding="async" />
               <h2>
                 <span>A</span>
                 <span>Java</span>
@@ -233,7 +244,7 @@
           </nav>
           <div class="project-scroll">
             <section class="project-section game-hero game-hero--skybattle" id="skybattle-title" aria-label="Sky Battle title screen">
-              <img src="Assets/SkyBattle/Home.png" alt="Sky Battle title screen" loading="eager" fetchpriority="high" decoding="async" />
+              <img src="Assets/SkyBattle/Home.png" alt="Sky Battle title screen" decoding="async" />
               <h2>A Fork of the Classic Game <span>1942</span></h2>
             </section>
             <section class="project-section game-play-section" id="skybattle-gameplay" aria-label="Sky Battle gameplay">
@@ -283,7 +294,7 @@
           </nav>
           <div class="project-scroll">
             <section class="project-section watersat-panel watersat-panel--home" id="watersat-home" aria-label="Water Sat homepage">
-              <img src="Assets/WaterSat/Home.png" alt="Water Sat homepage" loading="eager" fetchpriority="high" decoding="async" />
+              <img src="Assets/WaterSat/Home.png" alt="Water Sat homepage" decoding="async" />
             </section>
             <section class="project-section watersat-panel watersat-panel--analysis" id="watersat-analysis" aria-label="Water Sat satellite analysis">
               <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
@@ -309,7 +320,7 @@
               </div>
             </section>
             <section class="project-section watersat-panel watersat-panel--map" id="watersat-map" aria-label="Water Sat map view">
-              <img src="Assets/WaterSat/Trans.png" alt="Water Sat interactive map view" loading="lazy" decoding="async" />
+              <img src="Assets/WaterSat/Trans.png" alt="Water Sat interactive map view" decoding="async" />
               <div class="project-description-card project-description-card--water project-description-card--water-secondary">
                 <p>
                   Further work on this project has since been very gracefully handled by my colleague Maxim Skobun who had

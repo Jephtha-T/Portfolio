@@ -4,6 +4,50 @@
   const desktop = document.getElementById('desktop');
   if (!desktop) return;
 
+  const splash = document.querySelector('.splash');
+  document.body.classList.add('is-loading');
+
+  const waitForImage = (image) => {
+    if (image.complete && image.naturalWidth > 0) {
+      return Promise.resolve();
+    }
+
+    return new Promise((resolve) => {
+      const done = () => {
+        image.removeEventListener('load', done);
+        image.removeEventListener('error', done);
+        resolve();
+      };
+
+      image.addEventListener('load', done, { once: true });
+      image.addEventListener('error', done, { once: true });
+    });
+  };
+
+  const revealSite = async () => {
+    const images = Array.from(document.images);
+    const decodePromises = images.map((image) => (typeof image.decode === 'function' ? image.decode().catch(() => undefined) : waitForImage(image)));
+
+    await Promise.all(decodePromises);
+
+    document.body.classList.remove('is-loading');
+    document.body.classList.add('is-ready');
+
+    if (splash) {
+      window.setTimeout(() => {
+        splash.remove();
+      }, 360);
+    }
+  };
+
+  window.addEventListener('load', () => {
+    revealSite().catch(() => {
+      document.body.classList.remove('is-loading');
+      document.body.classList.add('is-ready');
+      if (splash) splash.remove();
+    });
+  });
+
   const clickSfx = new Audio('Assets/SFX/click.mp3');
   clickSfx.preload = 'auto';
   clickSfx.volume = 0.42;

@@ -79,6 +79,53 @@ body {
   overflow: hidden;
 }
 
+body.is-loading {
+  overflow: hidden;
+}
+
+body.is-loading .desktop {
+  opacity: 0;
+  transform: scale(0.996);
+}
+
+body.is-loading .taskbar {
+  opacity: 0;
+}
+
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  transition: opacity 320ms ease, visibility 320ms ease;
+}
+
+.splash__logo {
+  width: min(220px, 42vw);
+  height: auto;
+  display: block;
+  opacity: 0.92;
+}
+
+body.is-ready .splash {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.desktop,
+.taskbar {
+  transition: opacity 320ms ease, transform 320ms ease;
+}
+
+body.is-ready .desktop,
+body.is-ready .taskbar {
+  opacity: 1;
+  transform: none;
+}
+
 button,
 a {
   font: inherit;
