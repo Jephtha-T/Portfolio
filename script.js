@@ -72,7 +72,6 @@
 
   const openButtons = document.querySelectorAll('[data-open]');
   const closeButtons = document.querySelectorAll('[data-close]');
-  const mailButtons = document.querySelectorAll('[data-mail]');
   const scrollButtons = document.querySelectorAll('[data-scroll-target]');
   const floatingWindows = document.querySelectorAll('.window--floating');
   let topZ = 20;
@@ -165,13 +164,6 @@
     button.addEventListener('click', (event) => {
       const win = event.currentTarget.closest('.window--floating');
       if (win) closeWindow(win);
-    });
-  });
-
-  mailButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      // Use location.assign for better semantics.
-      window.location.assign(`mailto:${button.dataset.mail}`);
     });
   });
 
