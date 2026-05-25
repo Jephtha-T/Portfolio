@@ -830,6 +830,14 @@ a {
   justify-items: end;
 }
 
+.project-buttons--right a {
+  padding: 0 14px;
+}
+
+.project-buttons--right span {
+  padding-bottom: 4px;
+}
+
 .watersat-showcase {
   aspect-ratio: 1996 / 980;
   background: #151515;

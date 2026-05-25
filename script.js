@@ -102,7 +102,6 @@
     const win = document.querySelector(`.window--floating[data-window="${id}"]`);
     if (!win) return;
 
-    // Track opener for focus restore
     if (opener) openerMap.set(win, opener);
 
     if (opener) {
@@ -115,8 +114,8 @@
     win.setAttribute('aria-modal', 'true');
     bringToFront(win);
     playWindowVideos(win);
+    resetProjectScroll(win);
 
-    // Move focus into the dialog (to its close button) for keyboard users
     const closeBtn = win.querySelector('[data-close]');
     if (closeBtn) closeBtn.focus();
   };
@@ -142,6 +141,13 @@
 
   const getSectionScrollTop = (section, scroller) =>
     section.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop;
+
+  const resetProjectScroll = (win) => {
+    win.querySelectorAll('.project-scroll').forEach((scroller) => {
+      scroller.scrollTop = 0;
+      scroller.dispatchEvent(new Event('scroll'));
+    });
+  };
 
   // Initialize aria attributes on open buttons and wire click to openWindow with opener reference.
   openButtons.forEach((button) => {
