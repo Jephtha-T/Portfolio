@@ -74,6 +74,7 @@
   const closeButtons = document.querySelectorAll('[data-close]');
   const scrollButtons = document.querySelectorAll('[data-scroll-target]');
   const floatingWindows = document.querySelectorAll('.window--floating');
+  const logoButton = document.querySelector('.taskbar-logo');
   let topZ = 20;
   const openerMap = new WeakMap();
 
@@ -138,6 +139,16 @@
     openerMap.delete(win);
   };
 
+  const closeAllWindows = () => {
+    Array.from(floatingWindows)
+      .filter((win) => win.classList.contains('is-open'))
+      .forEach(closeWindow);
+
+    if (logoButton instanceof HTMLElement) {
+      logoButton.focus();
+    }
+  };
+
   const getSectionScrollTop = (section, scroller) =>
     section.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop;
 
@@ -166,6 +177,10 @@
       if (win) closeWindow(win);
     });
   });
+
+  if (logoButton instanceof HTMLElement) {
+    logoButton.addEventListener('click', closeAllWindows);
+  }
 
   scrollButtons.forEach((button) => {
     button.addEventListener('click', () => {

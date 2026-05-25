@@ -696,10 +696,10 @@ a {
   overflow: hidden;
 }
 
-.game-hero img,
-.game-play-section video,
-.watersat-panel video,
-.watersat-panel img {
+.game-hero > img,
+.game-play-section > video,
+.watersat-panel > video,
+.watersat-panel > img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -831,11 +831,16 @@ a {
 }
 
 .project-buttons--right a {
-  padding: 0 14px;
+  padding: 8px 16px 8px 14px;
+  justify-content: flex-start;
 }
 
 .project-buttons--right span {
-  padding-bottom: 4px;
+  padding-bottom: 0;
+}
+
+.project-description-card--water .project-buttons--right span::after {
+  width: 0;
 }
 
 .watersat-showcase {
@@ -843,16 +848,16 @@ a {
   background: #151515;
 }
 
-.watersat-panel--home video,
-.watersat-panel--home img {
+.watersat-panel--home > video,
+.watersat-panel--home > img {
   object-position: center top;
 }
 
-.watersat-panel--analysis video {
+.watersat-panel--analysis > video {
   object-position: center;
 }
 
-.watersat-panel--map img {
+.watersat-panel--map > img {
   object-position: center;
 }
 
@@ -932,6 +937,10 @@ a {
   display: grid;
   place-items: center;
   overflow: hidden;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
 .taskbar-logo img {
