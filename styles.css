@@ -459,6 +459,9 @@ a {
 .project-scroll {
   position: absolute;
   inset: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
@@ -475,6 +478,7 @@ a {
 }
 
 .project-section {
+  flex: 0 0 100%;
   height: 100%;
   min-height: 100%;
   width: 100%;
@@ -671,6 +675,11 @@ a {
   height: auto;
 }
 
+.window--stairs {
+  width: min(1030px, calc(100vw - 28px), calc((100dvh - var(--desktop-taskbar-height) - 48px) * 2.04));
+  height: auto;
+}
+
 .window__body--showcase {
   position: relative;
   flex: 0 0 auto;
@@ -690,7 +699,8 @@ a {
 
 .game-hero,
 .game-play-section,
-.watersat-panel {
+.watersat-panel,
+.stairs-panel {
   position: relative;
   min-height: 0;
   overflow: hidden;
@@ -699,7 +709,8 @@ a {
 .game-hero > img,
 .game-play-section > video,
 .watersat-panel > video,
-.watersat-panel > img {
+.watersat-panel > img,
+.stairs-panel > img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -848,6 +859,11 @@ a {
   background: #151515;
 }
 
+.stairs-showcase {
+  aspect-ratio: 1876 / 920;
+  background: #111;
+}
+
 .watersat-panel--home > video,
 .watersat-panel--home > img {
   object-position: center top;
@@ -858,6 +874,10 @@ a {
 }
 
 .watersat-panel--map > img {
+  object-position: center;
+}
+
+.stairs-panel > img {
   object-position: center;
 }
 
@@ -875,6 +895,24 @@ a {
 }
 
 .project-description-card--water p {
+  font-size: clamp(16px, 1.7vw, 21px);
+  line-height: 1.05;
+}
+
+.project-description-card--stairs {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 33%;
+  padding: 12px 18px 24px 24px;
+  border-radius: 48px 0 0 48px;
+  background: rgba(144, 144, 144, 0.76);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  text-align: right;
+}
+
+.project-description-card--stairs p {
   font-size: clamp(16px, 1.7vw, 21px);
   line-height: 1.05;
 }
@@ -1083,7 +1121,8 @@ a {
   }
 
   .window--game,
-  .window--watersat {
+  .window--watersat,
+  .window--stairs {
     width: calc(100vw - 28px);
   }
 
@@ -1103,6 +1142,16 @@ a {
   }
 
   .project-description-card--water p {
+    font-size: clamp(10px, 2.8vw, 13px);
+  }
+
+  .project-description-card--stairs {
+    width: 36%;
+    padding: 8px 10px 12px 14px;
+    border-radius: 34px 0 0 34px;
+  }
+
+  .project-description-card--stairs p {
     font-size: clamp(10px, 2.8vw, 13px);
   }
 

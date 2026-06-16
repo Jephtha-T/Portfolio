@@ -17,6 +17,8 @@
     <link rel="preload" as="image" href="Assets/SkyBattle/Home.png" />
     <link rel="preload" as="image" href="Assets/WaterSat/Home.png" />
     <link rel="preload" as="image" href="Assets/WaterSat/Trans.png" />
+    <link rel="preload" as="image" href="Assets/Stairs/Stairs.png" />
+    <link rel="preload" as="image" href="Assets/Stairs/MainPage.png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -41,6 +43,10 @@
         <button class="desktop-icon" type="button" data-open="lakewater" aria-label="Open Lake Water Readings">
           <img src="Assets/Icons/earth.svg" alt="" />
           <span>Lake Water<br />Readings</span>
+        </button>
+        <button class="desktop-icon" type="button" data-open="stairs" aria-label="Open Stairs">
+          <img src="Assets/Stairs/Stairs.png" alt="" />
+          <span>Stairs</span>
         </button>
       </section>
 
@@ -339,6 +345,42 @@
           </div>
         </div>
       </section>
+
+      <section
+        id="window-stairs"
+        class="window window--floating window--showcase window--stairs"
+        role="dialog"
+        aria-modal="false"
+        aria-label="Stairs"
+        aria-hidden="true"
+        data-window="stairs"
+      >
+        <div class="window__bar window__bar--yellow">
+          <span>Stairs</span>
+          <button class="window__close" type="button" data-close aria-label="Close Stairs window">&times;</button>
+        </div>
+        <div class="window__body window__body--showcase stairs-showcase">
+          <div class="project-scroll">
+            <section class="project-section stairs-panel" id="stairs-main" aria-label="Stairs main page">
+              <img src="Assets/Stairs/MainPage.png" alt="Stairs interactive 3D art project main page" decoding="async" />
+              <div class="project-description-card project-description-card--water project-description-card--stairs">
+                <p>
+                  This project was a byproduct of me learning Three.JS and Blender when I dabbled in 3D modelling. The
+                  piece itself was heavily inspired by ByungJoo Kim's 2022 piece "Ambiguous Wall-Stairs". The project was
+                  created as an interactive digital art piece that was an optical illusion of depth, size, shape and
+                  colour.
+                </p>
+                <div class="project-buttons project-buttons--compact project-buttons--right">
+                  <a href="https://jephtha-t.github.io/Stairs/" target="_blank" rel="noopener noreferrer">
+                    <img src="Assets/Icons/github.svg" alt="" />
+                    <span>Pages</span>
+                  </a>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="taskbar" aria-label="Taskbar">
@@ -350,7 +392,7 @@
           <img src="Assets/Icons/spotify.svg" alt="" />
           <span>Spotify</span>
         </a>
-        <a href="https://wa.me/60183219218" target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/6285284170407" target="_blank" rel="noopener noreferrer">
           <img src="Assets/Icons/whatsapp.svg" alt="" />
           <span>Whatsapp</span>
         </a>
