@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Pixelify+Sans:wght@400..700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Pixelify+Sans:wght@400..700&display=swap');
 
 :root {
-  --font-main: "Inter", Arial, Helvetica, sans-serif;
-  --font-pixel: "Pixelify Sans", "Courier New", monospace;
+  --font-main: 'Inter', Arial, Helvetica, sans-serif;
+  --font-pixel: 'Pixelify Sans', 'Courier New', monospace;
 
   --color-ink: #080808;
   --color-desktop-green: #14a10b;
@@ -11,6 +11,7 @@
   --color-taskbar: rgba(150, 155, 145, 0.72);
   --color-focus: #050505;
 
+  --app-height: 100vh;
   --color-cekopi-brown: #3b2b2a;
   --color-cekopi-brown-dark: #211818;
   --color-cekopi-brown-mid: #743927;
@@ -51,6 +52,12 @@
 
   --cekopi-copy-size: clamp(19px, 2vw, 25px);
   --cekopi-pipeline-title-size: clamp(44px, 6.7vw, 84px);
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --app-height: 100dvh;
+  }
 }
 
 * {
@@ -134,10 +141,10 @@ a {
 
 .desktop {
   position: relative;
-  height: calc(100dvh - var(--desktop-taskbar-height));
+  height: calc(var(--app-height) - var(--desktop-taskbar-height));
   min-height: var(--desktop-min-height);
   overflow: hidden;
-  background: url("Assets/clouds.png") center / cover no-repeat;
+  background: url('Assets/clouds.png') center / cover no-repeat;
 }
 
 .desktop-icons {
@@ -205,7 +212,7 @@ a {
   z-index: 2;
   width: var(--note-width);
   height: var(--note-height);
-  background: url("Assets/Note.png") center / contain no-repeat;
+  background: url('Assets/Note.png') center / contain no-repeat;
   pointer-events: none;
 }
 
@@ -512,7 +519,7 @@ a {
 }
 
 .project-dots button.is-active,
-.project-dots button[aria-current="true"] {
+.project-dots button[aria-current='true'] {
   background: var(--color-cekopi-cream);
 }
 
@@ -578,7 +585,7 @@ a {
   align-items: center;
   gap: 10px;
   color: #fff;
-  background: rgba(84, 68, 68, 0.86) url("Assets/Button Base.png") center / 100% 100% no-repeat;
+  background: rgba(84, 68, 68, 0.86) url('Assets/Button Base.png') center / 100% 100% no-repeat;
   border-radius: 26px;
   box-shadow: inset 0 0 0 1px rgba(244, 239, 220, 0.14);
   text-decoration: none;
@@ -602,7 +609,7 @@ a {
 }
 
 .project-buttons span::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: 0;
@@ -665,18 +672,18 @@ a {
 }
 
 .window--game {
-  width: min(1000px, calc(100vw - 28px), calc((100dvh - var(--desktop-taskbar-height) - 48px) * 1.88));
+  width: min(1000px, calc(100vw - 28px), calc(188vh - 184px));
   height: auto;
   font-family: var(--font-pixel);
 }
 
 .window--watersat {
-  width: min(1030px, calc(100vw - 28px), calc((100dvh - var(--desktop-taskbar-height) - 48px) * 2.04));
+  width: min(1030px, calc(100vw - 28px), calc(204vh - 200px));
   height: auto;
 }
 
 .window--stairs {
-  width: min(1030px, calc(100vw - 28px), calc((100dvh - var(--desktop-taskbar-height) - 48px) * 2.04));
+  width: min(1030px, calc(100vw - 28px), calc(204vh - 200px));
   height: auto;
 }
 
@@ -1022,17 +1029,23 @@ a {
 
 @media (max-width: 780px) {
   :root {
-    --desktop-min-height: 620px;
-    --window-project-height: min(680px, calc(100% - 20px));
-    --cekopi-copy-size: clamp(18px, 4.8vw, 22px);
+    --desktop-min-height: 0px;
+    --window-project-height: min(
+      680px,
+      calc(var(--app-height) - var(--desktop-taskbar-height) - 20px)
+    );
+    --window-shadow: 4px 4px 0 rgba(0, 0, 0, 0.34);
+    --cekopi-copy-size: clamp(14px, 3.9vw, 18px);
+    --cekopi-pipeline-title-size: clamp(28px, 8vw, 42px);
   }
 
   body {
-    overflow: auto;
+    overflow: hidden;
   }
 
   .desktop {
-    min-height: calc(100dvh - var(--desktop-taskbar-height));
+    height: calc(var(--app-height) - var(--desktop-taskbar-height));
+    min-height: calc(var(--app-height) - var(--desktop-taskbar-height));
   }
 
   .desktop-icons--projects {
@@ -1061,18 +1074,44 @@ a {
   .window--floating {
     left: 50% !important;
     top: 50% !important;
-    transform: translate(-50%, -50%) scale(0.98) !important;
+    max-height: var(--window-project-height);
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .window--floating.is-open {
+    animation: none;
+  }
+
+  .window--floating .window__bar {
+    cursor: default;
+  }
+
+  .window__bar {
+    min-height: 42px;
+    padding: 5px 10px;
+  }
+
+  .window__close {
+    width: 36px;
+    height: 36px;
+    font-size: 32px;
   }
 
   .window--project {
-    width: calc(100vw - 28px);
-    max-width: 360px;
+    width: calc(100vw - 22px);
+    max-width: 560px;
     height: var(--window-project-height);
   }
 
-  .window__body--project {
+  .window__body--project,
+  .window__body--showcase,
+  .game-showcase,
+  .game-showcase--skybattle,
+  .watersat-showcase,
+  .stairs-showcase {
     flex: 1 1 auto;
     aspect-ratio: auto;
+    min-height: 0;
   }
 
   .window--about {
@@ -1085,11 +1124,18 @@ a {
 
   .cekopi-analysis {
     grid-template-columns: 1fr;
-    grid-template-rows: 48% 52%;
+    grid-template-rows: minmax(0, 1fr) minmax(180px, 42%);
   }
 
   .cekopi-copy {
-    padding: 16px 24px 20px;
+    justify-content: flex-start;
+    gap: 12px;
+    overflow-y: auto;
+    padding: 14px 24px 16px;
+  }
+
+  .cekopi-copy p {
+    line-height: 1.14;
   }
 
   .cekopi-roi {
@@ -1102,6 +1148,9 @@ a {
 
   .project-buttons a {
     width: min(194px, 100%);
+    min-height: 44px;
+    padding: 7px 12px;
+    font-size: 14px;
   }
 
   .project-buttons span {
@@ -1110,49 +1159,121 @@ a {
 
   .phone-row {
     grid-template-columns: repeat(2, minmax(112px, 1fr));
+    gap: 12px;
+    align-items: center;
   }
 
   .phone-shot {
-    max-height: 250px;
+    max-height: min(190px, 28vh);
   }
 
   .project-dots {
     right: 8px;
+    gap: 10px;
+  }
+
+  .project-dots button {
+    width: 18px;
+    height: 18px;
+    border-width: 2px;
   }
 
   .window--game,
   .window--watersat,
   .window--stairs {
-    width: calc(100vw - 28px);
+    width: calc(100vw - 22px);
+    max-width: 560px;
+    height: var(--window-project-height);
+  }
+
+  .window--showcase .window__bar--yellow {
+    min-height: 38px;
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .window--showcase .window__close {
+    width: 34px;
+    height: 34px;
+    font-size: 28px;
+  }
+
+  .game-play-section,
+  .watersat-panel--analysis,
+  .watersat-panel--map,
+  .stairs-panel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .game-play-section > video,
+  .watersat-panel--analysis > video,
+  .watersat-panel--map > img,
+  .stairs-panel > img {
+    position: relative;
+    inset: auto;
+    flex: 0 0 46%;
+    width: 100%;
+    height: 46%;
+    min-height: 0;
+  }
+
+  .cekopi-pipeline {
+    align-content: start;
+    overflow-y: auto;
   }
 
   .project-description-card--game {
-    width: 38%;
-    padding: 12px 10px;
-    border-radius: 0 0 28px 0;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    flex: 1 1 auto;
+    gap: 12px;
+    justify-content: flex-start;
+    overflow-y: auto;
+    padding: 14px 14px 16px;
+    border-radius: 0;
   }
 
   .project-description-card--game p {
-    font-size: clamp(10px, 3.1vw, 13px);
+    font-size: clamp(13px, 3.9vw, 17px);
+    line-height: 1.12;
   }
 
   .project-description-card--water {
-    width: 36%;
-    padding: 14px 10px 14px 16px;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    flex: 1 1 auto;
+    gap: 12px;
+    justify-content: flex-start;
+    overflow-y: auto;
+    padding: 14px 14px 16px;
+    border-radius: 0;
+    text-align: left;
   }
 
   .project-description-card--water p {
-    font-size: clamp(10px, 2.8vw, 13px);
+    font-size: clamp(13px, 3.7vw, 16px);
+    line-height: 1.14;
   }
 
   .project-description-card--stairs {
-    width: 36%;
-    padding: 8px 10px 12px 14px;
-    border-radius: 34px 0 0 34px;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    flex: 1 1 auto;
+    gap: 12px;
+    justify-content: flex-start;
+    overflow-y: auto;
+    padding: 14px 14px 16px;
+    border-radius: 0;
+    text-align: left;
   }
 
   .project-description-card--stairs p {
-    font-size: clamp(10px, 2.8vw, 13px);
+    font-size: clamp(13px, 3.7vw, 16px);
+    line-height: 1.14;
   }
 
   .game-hero--cakequest h2 {
@@ -1167,16 +1288,24 @@ a {
   }
 
   .project-buttons--compact a {
-    width: min(128px, 100%);
-    min-height: 34px;
-    padding: 5px 10px;
-    border-radius: 17px;
-    font-size: 12px;
+    width: min(150px, 100%);
+    min-height: 40px;
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: 13px;
   }
 
   .project-buttons--compact img {
-    width: 17px;
-    height: 17px;
+    width: 19px;
+    height: 19px;
+  }
+
+  .project-buttons--right {
+    justify-items: start;
+  }
+
+  .project-description-card--water .project-buttons--right span::after {
+    width: min(52px, 100%);
   }
 }
 

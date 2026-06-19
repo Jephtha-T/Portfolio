@@ -4,12 +4,15 @@
   "private": true,
   "devDependencies": {
     "eslint": "^8.50.0",
-    "prettier": "^2.8.8",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1"
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8",
+    "selenium-webdriver": "^4.45.0"
   },
   "scripts": {
     "lint": "eslint . --ext .js --max-warnings=0",
+    "test": "npm run typecheck && npm run lint && npm run test:e2e",
+    "test:e2e": "node --test tests/selenium/*.test.js",
     "typecheck": "node --check script.js",
     "format:check": "prettier --check \"**/*.{js,css,html}\"",
     "format:fix": "prettier --write \"**/*.{js,css,html}\" && eslint --fix . --ext .js"

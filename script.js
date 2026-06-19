@@ -4,6 +4,17 @@
   const desktop = document.getElementById('desktop');
   if (!desktop) return;
 
+  const mobileWindowQuery = window.matchMedia('(max-width: 780px)');
+  const setAppHeight = () => {
+    document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+  };
+
+  setAppHeight();
+  window.addEventListener('resize', setAppHeight, { passive: true });
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', setAppHeight, { passive: true });
+  }
+
   const splash = document.querySelector('.splash');
   document.body.classList.add('is-loading');
 
@@ -24,16 +35,20 @@
     });
   };
 
-  const revealSite = async () => {
-    const images = Array.from(document.images);
-    const decodePromises = images.map((image) =>
-      typeof image.decode === 'function'
-        ? image.decode().catch(() => undefined)
-        : waitForImage(image)
+  const decodeImage = (image) =>
+    waitForImage(image).then(() =>
+      typeof image.decode === 'function' ? image.decode().catch(() => undefined) : undefined
     );
 
-    await Promise.all(decodePromises);
+  const withTimeout = (promise, delay) =>
+    new Promise((resolve) => {
+      const timeout = window.setTimeout(resolve, delay);
+      promise.then(resolve, resolve).finally(() => window.clearTimeout(timeout));
+    });
 
+  let hasRevealed = false;
+
+  const finishReveal = () => {
     document.body.classList.remove('is-loading');
     document.body.classList.add('is-ready');
 
@@ -44,13 +59,29 @@
     }
   };
 
-  window.addEventListener('load', () => {
-    revealSite().catch(() => {
-      document.body.classList.remove('is-loading');
-      document.body.classList.add('is-ready');
-      if (splash) splash.remove();
-    });
-  });
+  const revealSite = async () => {
+    if (hasRevealed) return;
+    hasRevealed = true;
+
+    const splashLogo = splash?.querySelector('img');
+    if (splashLogo instanceof HTMLImageElement) {
+      await withTimeout(decodeImage(splashLogo), 900);
+    }
+
+    finishReveal();
+  };
+
+  const safelyRevealSite = () => {
+    revealSite().catch(finishReveal);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', safelyRevealSite, { once: true });
+  } else {
+    safelyRevealSite();
+  }
+  window.setTimeout(safelyRevealSite, 1200);
+  window.addEventListener('load', safelyRevealSite, { once: true });
 
   const clickSfx = new Audio('Assets/SFX/click.mp3');
   clickSfx.preload = 'auto';
@@ -86,6 +117,7 @@
   const playWindowVideos = (win) => {
     win.querySelectorAll('video').forEach((video) => {
       video.muted = true;
+      if (video.readyState === 0) video.load();
       video.play().catch(() => {
         // Muted project previews may still be deferred by some browser policies.
       });
@@ -101,6 +133,8 @@
   const openWindow = (id, opener = null) => {
     const win = document.querySelector(`.window--floating[data-window="${id}"]`);
     if (!win) return;
+
+    closePeerWindows(win);
 
     if (opener) openerMap.set(win, opener);
 
@@ -137,6 +171,14 @@
       }
     }
     openerMap.delete(win);
+  };
+
+  const closePeerWindows = (nextWindow) => {
+    if (!mobileWindowQuery.matches) return;
+
+    Array.from(floatingWindows)
+      .filter((win) => win !== nextWindow && win.classList.contains('is-open'))
+      .forEach(closeWindow);
   };
 
   const closeAllWindows = () => {
@@ -249,7 +291,7 @@
   let activePointerId = null;
 
   const handlePointerDown = (event) => {
-    if (window.matchMedia('(max-width: 780px)').matches) return;
+    if (mobileWindowQuery.matches) return;
 
     const bar =
       event.target instanceof Element
